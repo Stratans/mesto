@@ -14,30 +14,20 @@
 	<header class="header header-content">
 		<img class="header__logo" src="./images/logo-mesto.svg" alt="логотип место">
 	</header>
-
-
-
-
-
-
 	<main class="content">
 		<section class="profile">
 			<img class="profile__avatar" src="./images/avatar.jpg" alt="пользовательский аватар">
 			<div class="profile__info">
-				<h1 class="profile__info-title">Жак-Ив Кусто</h1>
+				<h1 class="profile__name">Жак-Ив Кусто</h1>
 				<button type="button" class="profile__edit-btn">
 					<img class="profile__edit-img" src="./images/edit-btn.svg" alt="иконка редактировать">
 				</button>
-				<p class="profile__info-subtitle">Исследователь океана</p>
+				<p class="profile__job">Исследователь океана</p>
 			</div>
 			<button type="button" class="profile__add-btn">
 				<img class="profile__add-img" src="./images/plus.svg" alt="иконка плюса">
 			</button>
 		</section>
-
-
-
-
 		<section class="elements">
 			<article class="element">
 				<img class="element__img" src="./images/1_Zhivopisnyy-Most_Russia.jpg" alt="Живописный мост, Москва">
@@ -50,7 +40,7 @@
 				<button type="button" class="element__btn"></button>
 			</article>
 			<article class="element">
-				<img class="element__img" src="./images/3_Golden valley_Russia.jpg" alt="Золотая долина, Россия">
+				<img class="element__img" src="./images/3_Golden-valley_Russia.jpg" alt="Золотая долина, Россия">
 				<h2 class="element__title">Золотая долина</h2>
 				<button type="button" class="element__btn"></button>
 			</article>
@@ -71,32 +61,25 @@
 			</article>
 		</section>
 	</main>
-
-
-
-
-
 	<footer class="footer">
 		<p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 	</footer>
-
-
-	<div class="popup popup-opened">
+	<div class="popup popup_opened">
 		<div class="popup__container">
 			<button class="popup__close" type="button">
 				<img class="popup__close-img" src="./images/popup-close.svg" alt="иконка крестика">
 			</button>
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<form class="popup__form">
-				<input class="popup__input popup__input_type_name" type="text" name="name" value="Жак-Ив Кусто" required>
-				<input class="popup__input popup__input_type_about" type="text" name="about" value="Исследователь океана" required>
+				<input class="popup__input popup__input_type_name" type="text" name="name" value="Жак-Ив Кусто"
+					required>
+				<input class="popup__input popup__input_type_about" type="text" name="about"
+					value="Исследователь океана" required>
 				<button class="popup__btn" type="submit">Сохранить</button>
 			</form>
 		</div>
 	</div>
-
-
-
+	<script src="./script.js"></script>
 </body>
 
 </html>
