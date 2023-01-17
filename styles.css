@@ -257,7 +257,7 @@
 	line-height: 17px;
 	color: #000;
 	border: none;
-	border-bottom: 1px solid rgba(0,0,0,.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 0;
 }
 
@@ -280,13 +280,9 @@
 	border: none;
 	border-radius: 2px;
 	padding: 0;
-
-	
 }
 
-
 /* _________________________МЕДИАЗАПРОСЫ________________________ */
-
 
 @media screen and (max-width: 1023px) {
 	.header-content {
@@ -365,6 +361,36 @@
 
 	.footer {
 		margin: 48px 19px 36px;
+	}
+
+	.popup__container {
+		width: 282px;
+		height: 322px;
+	}
+
+	.popup__close {
+		width: 20px;
+		top: -36px;
+		right: 0;
+	}
+
+	.popup__title {
+		font-size: 18px;
+		line-height: 22px;
+		max-width: 238px;
+		margin: 25px 22px 75px;
+	}
+
+	.popup__input {
+		font-size: 14px;
+		line-height: 17px;
+		width: 238px;
+	}
+
+	.popup__btn {
+		font-size: 14px;
+		line-height: 17px;
+		width: 238px;
 	}
 }
 
