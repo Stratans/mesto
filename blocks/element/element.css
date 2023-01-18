@@ -1,0 +1,10 @@
+.element {
+	width: 282px;
+	height: 361px;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: calc(282 / 361 * 100%) 1fr;
+	border-radius: 10px;
+	background: #fff;
+	align-items: center;
+}

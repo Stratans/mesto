@@ -25,11 +25,10 @@ function handleFormSubmit(evt) {
 	evt.preventDefault();
 	profileName.textContent = inputName.value;
 	profileJob.textContent = inputAbout.value;
-	popupClose();
+	popupClose(); // Функция в функции - закрывает попап при нажатии на кнопку «Сохранить»
 }
 
 // Навешиваем слушателей
 popupOpenBtn.addEventListener('click', popupOpen); // Слушатель для кнопки открытия попапа
 popupCloseBtn.addEventListener('click', popupClose); // Слушатель для кнопки закрытия попапа
 popupForm.addEventListener('submit', handleFormSubmit); // Слушатель для кнопки «сохранить»
-
