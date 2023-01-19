@@ -18,45 +18,53 @@
 			<img class="profile__avatar" src="./images/avatar.jpg" alt="пользовательский аватар">
 			<div class="profile__info">
 				<h1 class="profile__name">Жак-Ив Кусто</h1>
-				<button type="button" class="profile__edit-btn">
-					<img class="profile__edit-img" src="./images/edit-btn.svg" alt="иконка редактировать">
-				</button>
+				<button type="button" class="profile__edit-btn"></button>
 				<p class="profile__job">Исследователь океана</p>
 			</div>
-			<button type="button" class="profile__add-btn">
-				<img class="profile__add-img" src="./images/plus.svg" alt="иконка плюса">
-			</button>
+			<button type="button" class="profile__add-btn"></button>
 		</section>
 		<section class="elements" aria-label="Фотогалерея">
 			<article class="element">
 				<img class="element__img" src="./images/zhivopisnyy-most-russia.jpg" alt="Живописный мост, Москва">
-				<h2 class="element__title">Живописный мост</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Живописный мост</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/nikola-lenivets-russia.jpg" alt="Никола-Ленивец, Россия">
-				<h2 class="element__title">Никола-Ленивец</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Никола-Ленивец</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/golden-valley-russia.jpg" alt="Золотая долина, Россия">
-				<h2 class="element__title">Золотая долина</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Золотая долина</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/dagestan-russia.jpg" alt="Дагестан, Россия">
-				<h2 class="element__title">Дагестан</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Дагестан</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/teriberka-russia.jpg" alt="Териберка, Россия">
-				<h2 class="element__title">Териберка</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Териберка</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/elbrus-russia.jpg" alt="Эльбрус, Россия">
-				<h2 class="element__title">Эльбрус</h2>
-				<button type="button" class="element__btn"></button>
+				<div class="element__info">
+					<h2 class="element__title">Эльбрус</h2>
+					<button type="button" class="element__btn"></button>
+				</div>
 			</article>
 		</section>
 	</main>
@@ -65,15 +73,11 @@
 	</footer>
 	<div class="popup">
 		<div class="popup__container">
-			<button class="popup__close" type="button">
-				<img class="popup__close-img" src="./images/popup-close.svg" alt="иконка крестика">
-			</button>
+			<button class="popup__close" type="button"></button>
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__form">
-				<input class="popup__input popup__input_type_name" type="text" name="name" value="Жак-Ив Кусто"
-					required>
-				<input class="popup__input popup__input_type_about" type="text" name="about"
-					value="Исследователь океана" required>
+			<form class="popup__form" name="profile-info">
+				<input class="popup__input popup__input_type_name" type="text" name="name" required>
+				<input class="popup__input popup__input_type_about" type="text" name="about" required>
 				<button class="popup__btn" type="submit">Сохранить</button>
 			</form>
 		</div>

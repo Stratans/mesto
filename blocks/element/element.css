@@ -1,9 +1,9 @@
 .element {
-	width: 282px;
-	height: 361px;
+	max-width: 282px;
+	min-height: 361px;
 	display: grid;
-	grid-template-columns: 1fr auto;
-	grid-template-rows: calc(282 / 361 * 100%) 1fr;
+	grid-template-columns: 282px;
+	grid-template-rows: 282px auto;
 	border-radius: 10px;
 	background: #fff;
 	align-items: center;

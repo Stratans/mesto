@@ -1,6 +1,7 @@
 .popup__input {
-	width: 358px;
-	height: 27px;
+	max-width: 358px;
+	width: 100%;
+	min-height: 27px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 17px;
@@ -14,6 +15,6 @@
 	.popup__input {
 		font-size: 14px;
 		line-height: 17px;
-		width: 238px;
+		max-width: 238px;
 	}
 }

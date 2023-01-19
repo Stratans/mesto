@@ -7,6 +7,11 @@
 	border: none;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
+	background-image: url(../../../images/popup-close.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 32px;
+	height: 32px;
 }
 
 .popup__close:hover {
@@ -16,6 +21,7 @@
 @media screen and (max-width: 767px) {
 	.popup__close {
 		width: 20px;
+		height: 20px;
 		top: -36px;
 		right: 0;
 	}
