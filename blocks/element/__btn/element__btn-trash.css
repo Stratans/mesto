@@ -8,8 +8,10 @@
 	outline: none;
 	background-color: transparent;
 	background-image: url(../../../images/trash.svg);
+	background-repeat: no-repeat;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
+
 }
 
 .element__btn-trash:hover {
