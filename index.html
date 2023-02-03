@@ -78,43 +78,43 @@
 		<p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 	</footer>
 	<!-- Попап "Редактировать профиль" -->
-	<div class="popup">
+	<div class="popup popup_type_edit">
 		<div class="popup__container">
 			<button class="popup__close" type="button"></button>
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__form" name="profile-info">
-				<input class="popup__input popup__input_type_name" type="text" name="name" required placeholder="Введите имя">
-				<input class="popup__input popup__input_type_about" type="text" name="about" required placeholder="Введите профессию">
-				<button class="popup__btn" type="submit">Сохранить</button>
+			<form class="popup__form form_type_edit" name="profile-info">
+				<input class="popup__input popup__input_profile_name" type="text" name="profile-name" required
+					placeholder="Введите имя">
+				<input class="popup__input popup__input_profile_about" type="text" name="profile-about" required
+					placeholder="Введите профессию">
+				<button class="popup__btn-save" type="submit">Сохранить</button>
 			</form>
 		</div>
 	</div>
 	<!-- Попап "Добавление места" -->
-	<div class="popup">
+	<div class="popup popup_type_add">
 		<div class="popup__container">
 			<button class="popup__close" type="button"></button>
 			<h2 class="popup__title">Новое место</h2>
-			<form class="popup__form" name="profile-info">
-				<input class="popup__input popup__input_type_name" type="text" name="name" required placeholder="Название">
-				<input class="popup__input popup__input_type_about" type="text" name="about" required placeholder="Ссылка на картинку">
-				<button class="popup__btn" type="submit">Создать</button>
+			<form class="popup__form form_type_add" name="profile-info">
+				<input class="popup__input popup__input_place_name" type="text" name="place-name" required
+					placeholder="Название">
+				<input class="popup__input popup__input_place_link" type="url" name="place-url" required
+					placeholder="Ссылка на картинку">
+				<button class="popup__btn-save" type="submit">Создать</button>
 			</form>
 		</div>
 	</div>
 	<!-- Попап "Просмотр картинки" -->
-	<div class="popup">
-		<div class="popup__container">
+	<div class="popup popup_type_show">
+		<div class="popup__container-show">
 			<button class="popup__close" type="button"></button>
-			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__form" name="profile-info">
-				<input class="popup__input popup__input_type_name" type="text" name="name" required>
-				<input class="popup__input popup__input_type_about" type="text" name="about" required>
-				<button class="popup__btn" type="submit">Сохранить</button>
-			</form>
+			<img class="popup__photo" src="./images/dagestan-russia.jpg" alt="#">
+			<p class="popup__subtitle"></p>
 		</div>
 	</div>
 	<!-- Темплейт (шаблон) для элементов -->
-	<template id="element-template" >
+	<template id="element-template">
 		<article class="element">
 			<img class="element__img" src="#" alt="#">
 			<div class="element__info">
