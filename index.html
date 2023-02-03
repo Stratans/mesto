@@ -24,54 +24,84 @@
 			<button type="button" class="profile__add-btn"></button>
 		</section>
 		<section class="elements" aria-label="Фотогалерея">
-			<article class="element">
+			<!-- <article class="element">
 				<img class="element__img" src="./images/zhivopisnyy-most-russia.jpg" alt="Живописный мост, Москва">
 				<div class="element__info">
 					<h2 class="element__title">Живописный мост</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
+				<button type="button" class="element__btn-trash"></button>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/nikola-lenivets-russia.jpg" alt="Никола-Ленивец, Россия">
 				<div class="element__info">
 					<h2 class="element__title">Никола-Ленивец</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
+				<button type="button" class="element__btn-trash"></button>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/golden-valley-russia.jpg" alt="Золотая долина, Россия">
 				<div class="element__info">
 					<h2 class="element__title">Золотая долина</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
+				<button type="button" class="element__btn-trash"></button>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/dagestan-russia.jpg" alt="Дагестан, Россия">
 				<div class="element__info">
 					<h2 class="element__title">Дагестан</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
+				<button type="button" class="element__btn-trash"></button>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/teriberka-russia.jpg" alt="Териберка, Россия">
 				<div class="element__info">
 					<h2 class="element__title">Териберка</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
+				<button type="button" class="element__btn-trash"></button>
 			</article>
 			<article class="element">
 				<img class="element__img" src="./images/elbrus-russia.jpg" alt="Эльбрус, Россия">
 				<div class="element__info">
 					<h2 class="element__title">Эльбрус</h2>
-					<button type="button" class="element__btn"></button>
+					<button type="button" class="element__btn-like"></button>
 				</div>
-			</article>
+				<button type="button" class="element__btn-trash"></button>
+			</article> -->
 		</section>
 	</main>
 	<footer class="footer">
 		<p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 	</footer>
-
+	<!-- Попап "Редактировать профиль" -->
+	<div class="popup">
+		<div class="popup__container">
+			<button class="popup__close" type="button"></button>
+			<h2 class="popup__title">Редактировать профиль</h2>
+			<form class="popup__form" name="profile-info">
+				<input class="popup__input popup__input_type_name" type="text" name="name" required placeholder="Введите имя">
+				<input class="popup__input popup__input_type_about" type="text" name="about" required placeholder="Введите профессию">
+				<button class="popup__btn" type="submit">Сохранить</button>
+			</form>
+		</div>
+	</div>
+	<!-- Попап "Добавление места" -->
+	<div class="popup">
+		<div class="popup__container">
+			<button class="popup__close" type="button"></button>
+			<h2 class="popup__title">Новое место</h2>
+			<form class="popup__form" name="profile-info">
+				<input class="popup__input popup__input_type_name" type="text" name="name" required placeholder="Название">
+				<input class="popup__input popup__input_type_about" type="text" name="about" required placeholder="Ссылка на картинку">
+				<button class="popup__btn" type="submit">Создать</button>
+			</form>
+		</div>
+	</div>
+	<!-- Попап "Просмотр картинки" -->
 	<div class="popup">
 		<div class="popup__container">
 			<button class="popup__close" type="button"></button>
@@ -83,17 +113,18 @@
 			</form>
 		</div>
 	</div>
-	<!-- --------Темплейт карточки-------- -->
-	<template>
+	<!-- Темплейт (шаблон) для элементов -->
+	<template id="element-template" >
 		<article class="element">
 			<img class="element__img" src="#" alt="#">
 			<div class="element__info">
 				<h2 class="element__title"></h2>
-				<button type="button" class="element__btn"></button>
+				<button type="button" class="element__btn-like"></button>
 			</div>
+			<button type="button" class="element__btn-trash"></button>
 		</article>
 	</template>
-	<!-- --------------------------------- -->
+	<script src="./scripts/elements.js"></script>
 	<script src="./scripts/index.js"></script>
 </body>
 

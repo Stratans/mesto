@@ -1,9 +1,15 @@
+/* импорт нормалайз */
 @import url(../vendor/normalize.css);
+/* импорт шрифты */
 @import url(../vendor/fonts/fonts.css);
+/* импорт page */
 @import url(../blocks/page/page.css);
+/* импорт header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+/* импорт content */
 @import url(../blocks/content/content.css);
+/* импорт секция profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
@@ -11,14 +17,19 @@
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
 @import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
+/* импорт секция elements */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__title/element__title.css);
-@import url(../blocks/element/__btn/element__btn.css);
+@import url(../blocks/element/__btn/element__btn-like.css);
+@import url(../blocks/element/__btn/_active/element__btn-like_active.css);
+@import url(../blocks/element/__btn/element__btn-trash.css);
+/* импорт секция footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+/* импорт popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
