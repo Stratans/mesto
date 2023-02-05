@@ -22,7 +22,6 @@ const popupPreview = document.querySelector('.popup_type_show');
 const popupPreviewImg = document.querySelector('.popup__photo');
 const popupPreviewSubtitle = document.querySelector('.popup__subtitle');
 
-
 closeBtns.forEach(btn => { // ищем родителя крестика и вызываем функцию закрытия попапа по родителю крестика
 	btn.addEventListener('click', (evt) => {
 		popupClose(evt.target.closest('.popup'));
@@ -41,8 +40,7 @@ function createElement(item) {
 	elementCardImg.alt = item.name; // берем атрибут alt
 	elementBtnTrash.addEventListener('click', () => elementCard.remove()); // слушатель для иконки корзины + стрелочная функция "удаление карточки"
 	elementBtnLike.addEventListener('click', () => elementBtnLike.classList.toggle('element__btn-like_active')); // слушатель для иконки лайка + стрелочная функция лайк/дизлайк 
-
-	elementCardImg.addEventListener('click', () => {
+	elementCardImg.addEventListener('click', () => { // слушатель для превью фото + стрелочная функция открытия попапа с фото с параметрами 
 		popupPreviewImg.src = item.link;
 		popupPreviewImg.alt = item.name;
 		popupPreviewSubtitle.textContent = item.name;
@@ -69,18 +67,6 @@ function renderElement(card) {
 // Рендер начального массива
 	initialCards.forEach(item => renderElement(item)); // Перебираем методом forEach начальный массив
 
-// Слушатели:
-popupOpenEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
-	popupOpen(popupEdit);
-	inputName.value = profileName.textContent;
-	inputAbout.value = profileJob.textContent;
-}); 
-formEdit.addEventListener('submit', handleFormSubmitEdit); // Слушатель для кнопки «сохранить»
-elementBtnAdd.addEventListener('click', () => { // Слушатель на иконку плюса
-	popupOpen(popupAdd);
-});
-formAdd.addEventListener('submit', handleFormSubmitAdd); // Слушатель сабмита на форму добавления
-
 // Функция для отправки формы
 function handleFormSubmitEdit(evt) {
 	evt.preventDefault();
@@ -100,8 +86,16 @@ function handleFormSubmitAdd(evt) {
 	popupClose(popupAdd);
 };
 
-
-
+popupOpenEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
+	popupOpen(popupEdit);
+	inputName.value = profileName.textContent;
+	inputAbout.value = profileJob.textContent;
+}); 
+formEdit.addEventListener('submit', handleFormSubmitEdit); // Слушатель для кнопки «сохранить»
+elementBtnAdd.addEventListener('click', () => { // Слушатель на иконку плюса
+	popupOpen(popupAdd);
+});
+formAdd.addEventListener('submit', handleFormSubmitAdd); // Слушатель сабмита на форму добавления
 
 
 
