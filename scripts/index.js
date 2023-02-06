@@ -78,11 +78,11 @@ function submitEditHandleForm(evt) {
 // Функция для добавления места
 function submitAddHandleForm(evt) {
 	evt.preventDefault();
-	const obj = {};
-	obj.name = placeInputNameAdd.value
-	obj.link = placeInputLinkAdd.value
+	const cardData = {};
+	cardData.name = placeInputNameAdd.value
+	cardData.link = placeInputLinkAdd.value
 	placeFormAdd.reset();
-	renderElement(obj);
+	renderElement(cardData);
 	closePopup(placePopupAdd);
 };
 
