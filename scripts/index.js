@@ -2,34 +2,34 @@
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element'); // находим темплейт, присваиваем ему карточку
 const elementsBlock = document.querySelector('.elements'); // находим секцию elements
 // константы для формы редактирования
-const popupEdit = document.querySelector('.popup_type_edit'); // Находим окно формы редактирования
-const popupOpenEditBtn = document.querySelector('.profile__edit-btn'); // Кнопка «редактировать»
-const formEdit = document.querySelector('.popup__form_type_edit'); // находим форму редактирования профиля
-const inputName = document.querySelector('.popup__input_profile_name'); // Инпут ФИО
-const inputAbout = document.querySelector('.popup__input_profile_about'); // Инпут Должность
-const profileName = document.querySelector('.profile__name'); // ФИО юзера
-const profileJob = document.querySelector('.profile__job'); // Должность юзер
+const popupEditProfile = document.querySelector('.popup_type_edit'); // Находим окно формы редактирования
+const popupEditBtn = document.querySelector('.profile__edit-btn'); // Кнопка «редактировать»
+const popupEditForm = document.querySelector('.popup__form_type_edit'); // находим форму редактирования профиля
+const popupInputName = document.querySelector('.popup__input_profile_name'); // Инпут ФИО
+const popupinputAbout = document.querySelector('.popup__input_profile_about'); // Инпут Должность
+const popupProfileName = document.querySelector('.profile__name'); // ФИО юзера
+const popupProfileJob = document.querySelector('.profile__job'); // Должность юзера
 // константы для добавления места
-const popupAdd = document.querySelector('.popup_type_add');
-const formAdd = document.querySelector('.popup__form_type_add');
-const elementInputName = document.querySelector('.popup__input_place_name');
-const elementInputLink = document.querySelector('.popup__input_place_link');
-const elementBtnAdd = document.querySelector('.profile__add-btn');
-// константа для закрытия попапа
-const closeBtns = document.querySelectorAll('.popup__close');
+const placePopupAdd = document.querySelector('.popup_type_add'); // попап добавления места
+const placeFormAdd = document.querySelector('.popup__form_type_add'); // форма добавления места
+const placeInputNameAdd = document.querySelector('.popup__input_place_name'); // инпут название места
+const placeInputLinkAdd = document.querySelector('.popup__input_place_link'); // инпут ссылка места
+const placeBtnAdd = document.querySelector('.profile__add-btn'); // кнопка "добавить" место
+// константа для закрытия всех попапов по крестику
+const closeAllBtns = document.querySelectorAll('.popup__close');
 // константы для открытия попапа с картинкой
-const popupPreview = document.querySelector('.popup_type_show');
-const popupPreviewImg = document.querySelector('.popup__photo');
-const popupPreviewSubtitle = document.querySelector('.popup__subtitle');
+const popupPreview = document.querySelector('.popup_type_show'); // попап открытия картинки
+const popupPreviewImg = document.querySelector('.popup__photo'); // сама картинка 
+const popupPreviewSubtitle = document.querySelector('.popup__subtitle'); // название картинки
 
-closeBtns.forEach(btn => { // ищем родителя крестика и вызываем функцию закрытия попапа по родителю крестика
+closeAllBtns.forEach(btn => { // ищем родителя крестика и вызываем функцию закрытия попапа по родителю крестика
 	btn.addEventListener('click', (evt) => {
-		popupClose(evt.target.closest('.popup'));
+		closePopup(evt.target.closest('.popup'));
 	});
 })
 
 // функция создания карточки
-function createElement(item) {
+function createElementCard(item) {
 	const elementCard = elementTemplate.cloneNode(true); // клонируем темплейт
 	const elementCardName = elementCard.querySelector('.element__title'); // переменная заголовок карточки
 	const elementCardImg = elementCard.querySelector('.element__img'); // переменная картинка карточки
@@ -44,67 +44,56 @@ function createElement(item) {
 		popupPreviewImg.src = item.link;
 		popupPreviewImg.alt = item.name;
 		popupPreviewSubtitle.textContent = item.name;
-		popupOpen(popupPreview);
+		openPopup(popupPreview);
 	});
 	return elementCard;
 };
 
 // Функция для открытия попапа
-const popupOpen = function(popupName) {
+const openPopup = function(popupName) {
 	popupName.classList.add('popup_opened');
 };
 
 // Функция для закрытия попапа
-const popupClose = function(popupName) {
+const closePopup = function(popupName) {
 	popupName.classList.remove('popup_opened');
 };
 
 // Функция для рендера карточки
 function renderElement(card) {
-	elementsBlock.prepend(createElement(card)); // Добаваляем методом prepend карточку
+	elementsBlock.prepend(createElementCard(card)); // Добаваляем методом prepend карточку
 };
 
 // Рендер начального массива
 	initialCards.forEach(item => renderElement(item)); // Перебираем методом forEach начальный массив
 
 // Функция для отправки формы
-function handleFormSubmitEdit(evt) {
+function submitEditHandleForm(evt) {
 	evt.preventDefault();
-	profileName.textContent = inputName.value;
-	profileJob.textContent = inputAbout.value;
-	popupClose(popupEdit); // Функция в функции - закрывает попап при нажатии на кнопку «Сохранить»
+	popupProfileName.textContent = popupInputName.value;
+	popupProfileJob.textContent = popupinputAbout.value;
+	closePopup(popupEditProfile); // Функция в функции - закрывает попап при нажатии на кнопку «Сохранить»
 };
 
 // Функция для добавления места
-function handleFormSubmitAdd(evt) {
+function submitAddHandleForm(evt) {
 	evt.preventDefault();
 	const obj = {};
-	obj.name = elementInputName.value
-	obj.link = elementInputLink.value
-	// createElement(obj);
+	obj.name = placeInputNameAdd.value
+	obj.link = placeInputLinkAdd.value
+	placeFormAdd.reset();
 	renderElement(obj);
-	popupClose(popupAdd);
+	closePopup(placePopupAdd);
 };
 
-popupOpenEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
-	popupOpen(popupEdit);
-	inputName.value = profileName.textContent;
-	inputAbout.value = profileJob.textContent;
+// вешаем слушателей
+popupEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
+	openPopup(popupEditProfile);
+	popupInputName.value = popupProfileName.textContent;
+	popupinputAbout.value = popupProfileJob.textContent;
 }); 
-formEdit.addEventListener('submit', handleFormSubmitEdit); // Слушатель для кнопки «сохранить»
-elementBtnAdd.addEventListener('click', () => { // Слушатель на иконку плюса
-	popupOpen(popupAdd);
+popupEditForm.addEventListener('submit', submitEditHandleForm); // Слушатель для кнопки «сохранить»
+placeBtnAdd.addEventListener('click', () => { // Слушатель на иконку плюса
+	openPopup(placePopupAdd);
 });
-formAdd.addEventListener('submit', handleFormSubmitAdd); // Слушатель сабмита на форму добавления
-
-
-
-
-
-
-
-
-
-
-
-
+placeFormAdd.addEventListener('submit', submitAddHandleForm); // Слушатель сабмита на форму добавления
