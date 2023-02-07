@@ -86,7 +86,7 @@ function submitAddHandleForm(evt) {
 	closePopup(placePopupAdd);
 };
 
-// вешаем слушателей
+// Вешаем слушателей
 popupEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
 	openPopup(popupEditProfile);
 	popupInputName.value = popupProfileName.textContent;
