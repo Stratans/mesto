@@ -51,6 +51,7 @@ function createElementCard(item) {
 
 // Функция для открытия попапа
 const openPopup = function(popupName) {
+	document.addEventListener('keydown', pressEcsHandle);
 	popupName.classList.add('popup_opened');
 };
 
@@ -85,6 +86,13 @@ function submitAddHandleForm(evt) {
 	renderElement(cardData);
 	closePopup(placePopupAdd);
 };
+
+// Функция для кнопки Esc
+function pressEcsHandle(evt) {
+	if (evt.key === `Escape`) {
+		closePopup(document.querySelector('.popup_opened'));
+	}
+}
 
 // Вешаем слушателей
 popupEditBtn.addEventListener('click', () => { // Слушатель для кнопки открытия попапа
