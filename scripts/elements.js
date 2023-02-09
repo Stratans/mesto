@@ -5,7 +5,7 @@ const initialCards = [
 	},
 	{
 	  name: 'Сангвиний',
-	  link: 'https://sun9-north.userapi.com/sun9-81/s/v1/if1/3IFTJ_qqF9hO_YseBioR_PtifUs_6JKiPMmpmh0xoet4r5uMZP2n2s4IjCVI8obZiBjj-6Oo.jpg?size=600x940&quality=96&type=album'
+	  link: 'https://sun9-40.userapi.com/impf/c834201/v834201863/5b09b/AmqVV_U4YkU.jpg?size=600x940&quality=96&sign=ca8cbdee2d98e5d7d1ea7e80d2da2f44&type=album'
 	},
 	{
 	  name: 'Корвус Коракс',
