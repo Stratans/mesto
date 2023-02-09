@@ -50,13 +50,14 @@ function createElementCard(item) {
 };
 
 // Функция для открытия попапа
-const openPopup = function(popupName) {
+function openPopup(popupName) {
 	document.addEventListener('keydown', pressEcsHandle);
 	popupName.classList.add('popup_opened');
 };
 
 // Функция для закрытия попапа
-const closePopup = function(popupName) {
+function closePopup(popupName) {
+	document.removeEventListener('keydown', pressEcsHandle)
 	popupName.classList.remove('popup_opened');
 };
 
@@ -89,7 +90,7 @@ function submitAddHandleForm(evt) {
 
 // Функция для кнопки Esc
 function pressEcsHandle(evt) {
-	if (evt.key === `Escape`) {
+	if (evt.key === 'Escape') {
 		closePopup(document.querySelector('.popup_opened'));
 	}
 }
