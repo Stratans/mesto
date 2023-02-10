@@ -22,6 +22,9 @@ const popupPreview = document.querySelector('.popup_type_show'); // попап �
 const popupPreviewImg = document.querySelector('.popup__photo'); // сама картинка 
 const popupPreviewSubtitle = document.querySelector('.popup__subtitle'); // название картинки
 
+// Константа для всех попапов
+const popups = document.querySelectorAll('.popup');
+
 closeAllBtns.forEach(btn => { // ищем родителя крестика и вызываем функцию закрытия попапа по родителю крестика
 	btn.addEventListener('click', (evt) => {
 		closePopup(evt.target.closest('.popup'));
@@ -106,3 +109,15 @@ placeBtnAdd.addEventListener('click', () => { // Слушатель на ико�
 	openPopup(placePopupAdd);
 });
 placeFormAdd.addEventListener('submit', submitAddHandleForm); // Слушатель сабмита на форму добавления
+
+// Функция для закрытия всех попапов по оверлею
+popups.forEach((popup) => {
+	popup.addEventListener('mousedown', (evt) => {
+		if (evt.target.classList.contains('popup_opened')) {
+			closePopup(popup);
+		}
+		if (evt.target.classList.contains('popup__close')) {
+			closePopup(popup);
+		}
+	});
+});
