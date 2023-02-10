@@ -112,11 +112,8 @@ placeFormAdd.addEventListener('submit', submitAddHandleForm); // Слушате�
 
 // Функция для закрытия всех попапов по оверлею
 popups.forEach((popup) => {
-	popup.addEventListener('mousedown', (evt) => {
-		if (evt.target.classList.contains('popup_opened')) {
-			closePopup(popup);
-		}
-		if (evt.target.classList.contains('popup__close')) {
+	popup.addEventListener('click', (evt) => {
+		if (evt.target.classList.contains('popup')) {
 			closePopup(popup);
 		}
 	});
