@@ -2,7 +2,7 @@
 
 https://stratans.github.io/mesto/
 
-**Бесконечная красота России - её стоит увидеть своими глазами**
+**Настоящие герои вселенной Warhammer 40000**
 
 ### Технологии:
 1. HTML 
@@ -12,3 +12,4 @@ https://stratans.github.io/mesto/
 5. Flex
 5. Grid layout
 6. Figma
+7. JavaScript
