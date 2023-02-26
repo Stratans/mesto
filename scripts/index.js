@@ -1,3 +1,5 @@
+'use strict'
+
 // константы для темплейта и секции Elements
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element'); // находим темплейт, присваиваем ему карточку
 const elementsBlock = document.querySelector('.elements'); // находим секцию elements
