@@ -19,6 +19,19 @@ class Card {
 		return cardElement;
 	};
 
+	// Метод для лайка карточки
+	_pressLike() {
+		this.classList.toggle('element__btn-like_active');
+	};
+
+	// Метод для удаления карточки
+	_deleteCard() {
+		this._elementCard.remove();
+		this._elementCard = null;
+	};
+
+
+
 	// Генерируем карточку публичным методом
 	generateCard() {
 		this._elementCard = this._getTemplate();
@@ -33,16 +46,14 @@ class Card {
 // Вешаем слушатели
 _setEventListeners() {
 	this._elementCardImg.addEventListener('click', () => {
-		this._openPopup(this._name, this._link) 
+		this._openPopup(this._name, this._link);
 	});
-	this._elementCard.querySelector('.element__btn-like').addEventListener('click', (evt) => {
-		evt.target.classList.toggle('element__btn-like_active')
-	});
+	this._elementCard.querySelector('.element__btn-like').addEventListener('click', this._pressLike)
 	this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
-		this._elementCard.remove()
-		this._elementCard = null
+		this._deleteCard();
 	});
 };
+
 };
 
 export default Card

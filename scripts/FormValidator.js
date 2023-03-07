@@ -84,6 +84,7 @@ export class FormValidator {
 		// Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
 
 		this._toggleButtonState();
+
 		// блокируем самбит при создании карточки
 		this._formElement.addEventListener('reset', () => {
 			setTimeout(() => {
@@ -91,6 +92,7 @@ export class FormValidator {
 			}, 0);
 		});
 
+		
 		// Обойдём все элементы полученной коллекции
 		this._inputList.forEach((inputElement) => {
 			// каждому полю добавим обработчик события input
@@ -107,9 +109,9 @@ export class FormValidator {
 	resetValidation() {
 		this._inputList.forEach((inputElement) => {
 			this._hideInputError(inputElement)
-			this._toggleButtonState()
 		});
-	};
+		this._toggleButtonState()
+	}
 
 	// Вызовем функцию
 	enableValidation() {

@@ -123,9 +123,11 @@ popups.forEach((popup) => {
 	});
 });
 
+// добавляем валидацию в редактирование профиля  
 const editValidation = new FormValidator (options, popupEditForm)
 editValidation.enableValidation();
 
+// добавляем валидацию в добавление места  
 const addValidation = new FormValidator (options, placeFormAdd)
 addValidation.enableValidation();
 
@@ -133,16 +135,17 @@ addValidation.enableValidation();
 
 // слушатель для кнопки открытия попапа
 popupEditBtn.addEventListener('click', () => {
-	editValidation.resetValidation();
 	openPopup(popupEditProfile);
 	popupInputName.value = popupProfileName.textContent;
 	popupinputAbout.value = popupProfileJob.textContent;
+	editValidation.resetValidation();
 });
 // слушатель для кнопки «сохранить»
 popupEditForm.addEventListener('submit', submitEditHandleForm);
 // слушатель на иконку плюса
 placeBtnAdd.addEventListener('click', () => {
 	openPopup(placePopupAdd);
+	editValidation.resetValidation();
 });
 // слушатель сабмита на форму добавления
 placeFormAdd.addEventListener('submit', submitAddHandleForm); 
