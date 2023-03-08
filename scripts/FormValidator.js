@@ -59,6 +59,17 @@ export class FormValidator {
 		})
 	};
 
+	// методы для переключения состояния кнопки "сохранить"
+	_disableButton() {
+		this._buttonElement.setAttribute('disabled', true);
+		this._buttonElement.classList.add(this._inactiveButtonClass)
+	};
+
+	_enableButton() {
+		this._buttonElement.removeAttribute('disabled');
+		this._buttonElement.classList.remove(this._inactiveButtonClass)
+	};
+
 	// Функция принимает массив полей ввода
 	// и элемент кнопки, состояние которой нужно менять
 	_toggleButtonState() {
@@ -81,18 +92,13 @@ export class FormValidator {
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
 		// Найдём в текущей форме кнопку отправки
 		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+		// слушатель для дизэйблбаттон
+		this._formElement.addEventListener('submit', () => {
+			this._disableButton();
+		});
 		// Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
-
 		this._toggleButtonState();
 
-		// блокируем самбит при создании карточки
-		this._formElement.addEventListener('reset', () => {
-			setTimeout(() => {
-				this._toggleButtonState()
-			}, 0);
-		});
-
-		
 		// Обойдём все элементы полученной коллекции
 		this._inputList.forEach((inputElement) => {
 			// каждому полю добавим обработчик события input

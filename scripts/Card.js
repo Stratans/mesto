@@ -21,7 +21,7 @@ class Card {
 
 	// Метод для лайка карточки
 	_pressLike() {
-		this.classList.toggle('element__btn-like_active');
+		this._like.classList.toggle('element__btn-like_active');
 	};
 
 	// Метод для удаления карточки
@@ -39,6 +39,7 @@ class Card {
 		this._elementCardImg.src = this._link;
 		this._elementCardImg.alt = this._name;
 		this._elementCard.querySelector('.element__title').textContent = this._name;
+		this._like = this._elementCard.querySelector('.element__btn-like');
 		this._setEventListeners();
 		return this._elementCard;
 	};
@@ -48,7 +49,9 @@ _setEventListeners() {
 	this._elementCardImg.addEventListener('click', () => {
 		this._openPopup(this._name, this._link);
 	});
-	this._elementCard.querySelector('.element__btn-like').addEventListener('click', this._pressLike)
+	this._like.addEventListener('click', () => {
+		this._pressLike()
+	});
 	this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
 		this._deleteCard();
 	});
