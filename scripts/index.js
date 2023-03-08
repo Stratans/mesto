@@ -145,7 +145,7 @@ popupEditForm.addEventListener('submit', submitEditHandleForm);
 // слушатель на иконку плюса
 placeBtnAdd.addEventListener('click', () => {
 	openPopup(placePopupAdd);
-	editValidation.resetValidation();
+	addValidation.resetValidation();
 });
 // слушатель сабмита на форму добавления
 placeFormAdd.addEventListener('submit', submitAddHandleForm); 
