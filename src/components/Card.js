@@ -1,22 +1,28 @@
-'use strict'
-
 //Создаем класс Card, записываем в него конструктор
-class Card {
-	constructor(data, templateSelector, openPopup) {
+export default class Card {
+	constructor(data, templateSelector, handleCardClick) {
 		this._templateSelector = templateSelector;
-		this._link = data.link;
 		this._name = data.name;
-		this._openPopup = openPopup;
+		this._link = data.link;
+		this._handleCardClick = handleCardClick;
 	};
 
 	// Метод _getTemplate - находим и возвращаем шаблон карточки
 	_getTemplate() {
 		const cardElement = document
-		.querySelector(this._templateSelector)
-		.content
-		.querySelector('.element')
-		.cloneNode(true);
+			.querySelector(this._templateSelector)
+			.content
+			.querySelector('.element')
+			.cloneNode(true);
 		return cardElement;
+	};
+
+	// функция открытия попапа с картинкой
+	_clickImageHandle = () => {
+		{
+			this._handleCardClick({ name: this._name, link: this._link }
+			)
+		};
 	};
 
 	// Метод для лайка карточки
@@ -30,8 +36,6 @@ class Card {
 		this._elementCard = null;
 	};
 
-
-
 	// Генерируем карточку публичным методом
 	generateCard() {
 		this._elementCard = this._getTemplate();
@@ -44,22 +48,20 @@ class Card {
 		return this._elementCard;
 	};
 
-// Вешаем слушатели
-_setEventListeners() {
-	this._elementCardImg.addEventListener('click', () => {
-		this._openPopup(this._name, this._link);
-	});
-	this._like.addEventListener('click', () => {
-		this._pressLike()
-	});
-	this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
-		this._deleteCard();
-	});
-};
+	// Вешаем слушатели
+	_setEventListeners() {
+		this._elementCardImg.addEventListener('click', () => {
+			this._clickImageHandle(this._name, this._link);
+		});
+
+		this._like.addEventListener('click', () => {
+			this._pressLike()
+		});
+
+		this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
+			this._deleteCard();
+		});
+	};
 
 };
 
-export default Card
-
-
-	
