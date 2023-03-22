@@ -1,36 +1,53 @@
-// подключаем path к конфигу вебпак
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
-// module.exports — это синтаксис экспорта в Node.js
 module.exports = {
+  entry: {
+    main: './src/pages/index.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    publicPath: '',
+  },
+  mode: 'development',
+  devServer: {
+    static: path.resolve(__dirname, './dist'),
+    open: true,
+    compress: true,
+    port: 8080
+  },
+  module: {
+    rules: [{
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: '/node_modules/'
+      },
+      {
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
+        ]
+      },
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
 
-	// указали первое место, куда заглянет webpack, — файл index.js в папке src 
-	entry: { main: './src/index.js'},
-	
-	// указали в какой файл будет собираться весь js и дали ему имя 
-	output: {
-		// переписали точку выхода, используя утилиту path 
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'main.js',
-			publicPath: ''
-	  },
-
-	// добавили режим разработчика  
-	mode: 'development',
-	
-	devServer: {
-		// путь, куда "смотрит" режим разработчика
-		static: path.resolve(__dirname, './dist'), 
-
-		// это ускорит загрузку в режиме разработки
-		compress: true, 
-		
-		// порт, чтобы открывать сайт по адресу localhost:8080, но можно поменять порт
-		port: 8080, 
-		
-		// сайт будет открываться сам при запуске npm run dev
-		open: true
-	  },
+  ]
 }
-

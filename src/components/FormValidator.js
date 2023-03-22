@@ -1,5 +1,5 @@
 // Создаем класс FormValidator, записываем в него конструктор
-class FormValidator {
+export default class FormValidator {
 	constructor(options, formElement) {
 		this._formElement = formElement
 		this._formSelector = options.formSelector
@@ -71,7 +71,7 @@ class FormValidator {
 	// Функция принимает массив полей ввода
 	// и элемент кнопки, состояние которой нужно менять
 	_toggleButtonState() {
-		
+
 		// Если есть хотя бы один невалидный инпут
 		if (this._hasInvalidInput()) {
 
@@ -126,13 +126,4 @@ class FormValidator {
 	enableValidation() {
 		this._setEventListeners()
 	};
-
 };
-
-export default FormValidator
-
-
-
-
-
-

@@ -62,6 +62,4 @@ export default class Card {
 			this._deleteCard();
 		});
 	};
-
 };
-
