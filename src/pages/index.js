@@ -56,25 +56,24 @@ const userInfo = new UserInfo({ nameSelector, aboutSelector });
 const submitEditCardFormHandle = (evt, dataInput) => {
 	evt.preventDefault();
 	userInfo.setUserInfo(dataInput);
-	editProfile.close();
+	popupEditProfile.close();
 };
 
 // редактирование профиля
-const editProfile = new PopupWithForm(popupEditProfileSelector, submitEditCardFormHandle)
-//console.log(popupEditProfileSelector)
-editProfile.setEventListeners();
+const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitEditCardFormHandle)
+popupEditProfile.setEventListeners();
 
 // добавляем валидацию в редактирование профиля  
-const editValidation = new FormValidator(options, popupEditForm)
-editValidation.enableValidation();
+// const validatorEditProfile = new FormValidator(options, popupEditForm)
+// validatorEditProfile.enableValidation();
 
 // добавляем валидацию в добавление места  
-const addValidation = new FormValidator(options, placeFormAdd)
-addValidation.enableValidation();
+const validatorAddCard = new FormValidator(options, placeFormAdd)
+validatorAddCard.enableValidation();
 
 // функция открытия окна редактирования
 function openEditForm() {
-	editProfile.open(userInfo.getUserInfo());
+	popupEditProfile.open(userInfo.getUserInfo());
 };
 
 // создание карточки
@@ -91,4 +90,8 @@ function createCard(item) {
 popupEditBtn.addEventListener('click', openEditForm);
 
 // слушатель на кнопке добавления
-placeBtnAdd.addEventListener('click', () => { popupAddCard.open() });
+placeBtnAdd.addEventListener('click', () => { popupAddCard.open()
+	// добавляем валидацию в добавление места  
+	const validatorAddCard = new FormValidator(options, placeFormAdd)
+	validatorAddCard.enableValidation();
+ });

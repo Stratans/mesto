@@ -16,12 +16,14 @@ export default class PopupWithForm extends Popup {
 		return inputsValues;
 	};
 
-	_onSubmitHandler = (evt) => {
+	_onSubmitHandle = (evt) => {
 		this._submitForm(evt, this._getInputValues());
 	};
 
 	open(values) {
 		super.open();
+// 		const validatorAddCard = new FormValidator(options, placeFormAdd)
+// validatorAddCard.enableValidation();
 		if (values) {
 			this._inputs.forEach(input => {
 				input.value = values[input.name] || '';
@@ -30,12 +32,12 @@ export default class PopupWithForm extends Popup {
 	};
 
 	close() {
-		this._form.reset();
 		super.close();
+		this._form.reset();
 	};
 
 	setEventListeners() {
 		super.setEventListeners();
-		this._form.addEventListener('submit', this._onSubmitHandler);
+		this._form.addEventListener('submit', this._onSubmitHandle);
 	};
 };
