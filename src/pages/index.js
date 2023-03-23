@@ -64,12 +64,12 @@ const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitEditC
 popupEditProfile.setEventListeners();
 
 // добавляем валидацию в редактирование профиля  
-// const validatorEditProfile = new FormValidator(options, popupEditForm)
-// validatorEditProfile.enableValidation();
+const validatorEditProfile = new FormValidator(options, popupEditForm)
+validatorEditProfile.enableValidation();
 
-// добавляем валидацию в добавление места  
-const validatorAddCard = new FormValidator(options, placeFormAdd)
-validatorAddCard.enableValidation();
+// // добавляем валидацию в добавление места  
+// const validatorAddCard = new FormValidator(options, placeFormAdd)
+// validatorAddCard.enableValidation();
 
 // функция открытия окна редактирования
 function openEditForm() {
