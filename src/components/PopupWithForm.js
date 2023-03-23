@@ -22,8 +22,6 @@ export default class PopupWithForm extends Popup {
 
 	open(values) {
 		super.open();
-// 		const validatorAddCard = new FormValidator(options, placeFormAdd)
-// validatorAddCard.enableValidation();
 		if (values) {
 			this._inputs.forEach(input => {
 				input.value = values[input.name] || '';

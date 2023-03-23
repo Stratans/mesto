@@ -67,9 +67,9 @@ popupEditProfile.setEventListeners();
 const validatorEditProfile = new FormValidator(options, popupEditForm)
 validatorEditProfile.enableValidation();
 
-// // добавляем валидацию в добавление места  
-// const validatorAddCard = new FormValidator(options, placeFormAdd)
-// validatorAddCard.enableValidation();
+// добавляем валидацию в добавление места  
+const validatorAddCard = new FormValidator(options, placeFormAdd)
+validatorAddCard.enableValidation();
 
 // функция открытия окна редактирования
 function openEditForm() {
@@ -90,8 +90,11 @@ function createCard(item) {
 popupEditBtn.addEventListener('click', openEditForm);
 
 // слушатель на кнопке добавления
-placeBtnAdd.addEventListener('click', () => { popupAddCard.open()
-	// добавляем валидацию в добавление места  
-	const validatorAddCard = new FormValidator(options, placeFormAdd)
-	validatorAddCard.enableValidation();
- });
+placeBtnAdd.addEventListener('click', () => { 
+	popupAddCard.open();
+	validatorAddCard.disableSubmitButton();
+});
+
+
+
+

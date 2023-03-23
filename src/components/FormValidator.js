@@ -8,6 +8,7 @@ export default class FormValidator {
 		this._inactiveButtonClass = options.inactiveButtonClass;
 		this._inputErrorClass = options.inputErrorClass;
 		this._errorClass = options.errorClass;
+		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 	};
 
 	// Функция, которая добавляет класс с ошибкой
@@ -100,7 +101,6 @@ export default class FormValidator {
 
 		// Обойдём все элементы полученной коллекции
 		this._inputList.forEach((inputElement) => {
-
 			// каждому полю добавим обработчик события input
 			inputElement.addEventListener('input', () => {
 
@@ -112,6 +112,11 @@ export default class FormValidator {
 				this._toggleButtonState();
 			});
 		});
+	};
+
+	disableSubmitButton() {
+		this._buttonElement.classList.add(this._inactiveButtonClass);
+		this._buttonElement.setAttribute('disabled', true);
 	};
 
 	resetValidation() {
