@@ -10,7 +10,9 @@ import {
 	popupEditBtn,
 	popupEditForm,
 	placeFormAdd,
-	placeBtnAdd
+	placeBtnAdd,
+	token,
+	address
 } from '../utils/constants.js'
 
 import { options } from '../utils/constants.js'

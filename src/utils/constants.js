@@ -36,6 +36,10 @@ export const options = {
 	errorClass: 'popup__input-error_visible'
 };
 
+// константы для API:
+export const token = 'ea7d7824-da17-4fe9-ad85-699e9e363bb4';
+export const address = 'https://mesto.nomoreparties.co/v1/cohort-63';
+
 // константы для формы редактирования:
 export const popupEditBtn = document.querySelector('.profile__edit-btn'); // Кнопка «редактировать»
 export const popupEditForm = document.querySelector('.popup__form_type_edit'); // находим форму редактирования профиля
