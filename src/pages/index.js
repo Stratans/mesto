@@ -63,11 +63,11 @@ const submitEditCardFormHandle = (evt, dataInput) => {
 const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitEditCardFormHandle)
 popupEditProfile.setEventListeners();
 
-// добавляем валидацию в редактирование профиля  
+// валидация в профиле  
 const validatorEditProfile = new FormValidator(options, popupEditForm)
 validatorEditProfile.enableValidation();
 
-// добавляем валидацию в добавление места  
+// валидация в добавлении карточки
 const validatorAddCard = new FormValidator(options, placeFormAdd)
 validatorAddCard.enableValidation();
 
