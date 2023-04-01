@@ -49,6 +49,26 @@
 			</form>
 		</div>
 	</div>
+
+	<!-- Попап "Обновить аватар" -->
+	<div class="popup popup_type_avatar">
+		<div class="popup__container">
+			<button class="popup__close" type="button"></button>
+			<h2 class="popup__title">Обновить аватар</h2>
+			<form class="popup__form popup__form_edit-avatar" name="update-avatar" novalidate>
+				<input
+				id="avatar"
+				class="popup__input popup__input_avatar"
+				type="url"
+				name="avatar"
+				placeholder="Ссылка на картинку"
+				required>
+				<span class="popup__input-error avatar-link-error"></span>
+				<button class="popup__btn-save popup__btn-save_disabled" type="submit">Сохранить</button>
+			</form>
+		</div>
+	</div>
+
 	<!-- Попап "Добавление места" -->
 	<div class="popup popup_type_add">
 		<div class="popup__container">
