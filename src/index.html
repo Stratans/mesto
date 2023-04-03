@@ -55,36 +55,6 @@
 		</div>
 	</div>
 
-	<!-- Попап "Обновить аватар" -->
-	<div class="popup popup_type_avatar">
-		<div class="popup__container">
-			<button class="popup__close" type="button"></button>
-			<h2 class="popup__title">Обновить аватар</h2>
-			<form class="popup__form popup__form_edit-avatar" name="update-avatar" novalidate>
-				<input
-				id="avatar"
-				class="popup__input popup__input_avatar"
-				type="url"
-				name="avatar"
-				placeholder="Ссылка на картинку"
-				required>
-				<span class="popup__input-error avatar-error"></span>
-				<button class="popup__btn-save popup__btn-save_disabled" type="submit">Сохранить</button>
-			</form>
-		</div>
-	</div>
-
-	<!-- Попап "Подтверждения удаления карточки" -->
-	<div class="popup popup_type_delete">
-		<div class="popup__container">
-			<button class="popup__close" type="button"></button>
-			<h2 class="popup__title">Вы уверены?</h2>
-			<form class="popup__form popup__form_delete" name="form-delete-card" novalidate>
-				<button class="popup__btn-save popup__btn-save_disabled" type="submit">Да</button>
-			</form>
-		</div>
-	</div>
-
 	<!-- Попап "Добавление места" -->
 	<div class="popup popup_type_add">
 		<div class="popup__container">
@@ -109,6 +79,38 @@
 			<p class="popup__subtitle"></p>
 		</div>
 	</div>
+
+	<!-- Попап "Обновить аватар" -->
+	<div class="popup popup_type_avatar">
+		<div class="popup__container">
+			<button class="popup__close" type="button"></button>
+			<h2 class="popup__title">Обновить аватар</h2>
+			<form class="popup__form popup__form_edit-avatar" name="update-avatar" novalidate>
+				<input
+				id="avatar"
+				class="popup__input popup__input_avatar"
+				type="url"
+				name="avatar"
+				placeholder="Ссылка на картинку"
+				required>
+				<span class="popup__input-error avatar-error"></span>
+				<button class="popup__btn-save popup__btn-save_disabled" type="submit">Сохранить</button>
+			</form>
+		</div>
+	</div>
+
+
+	<!-- Попап "Подтверждение удаления карточки" -->
+	<div class="popup popup_type_delete">
+		<div class="popup__container">
+			<button class="popup__close" type="button"></button>
+			<h2 class="popup__title">Вы уверены?</h2>
+			<form class="popup__form popup__form_delete" name="form-delete-card" novalidate>
+				<button class="popup__btn-save popup__btn-save_disabled" type="submit">Да</button>
+			</form>
+		</div>
+	</div>
+
 	<!-- Темплейт (шаблон) для элементов -->
 	<template id="element-template">
 		<article class="element">
@@ -117,7 +119,7 @@
 				<h2 class="element__title"></h2>
 				<div class="element__like-container" >
 				<button type="button" class="element__btn-like"></button>
-				<p class="element__like-number">500</p>
+				<p class="element__like-number">9</p>
 				</div>
 			</div>
 			<button type="button" class="element__btn-trash"></button>

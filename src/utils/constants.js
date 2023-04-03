@@ -1,4 +1,4 @@
-// Массив первые 6 карточек
+// Массив первые 6 карточек:
 export const initialCards = [
 	{
 		name: 'Леман Русс',
@@ -48,16 +48,23 @@ export const popupEditForm = document.querySelector('.popup__form_type_edit'); /
 export const placeFormAdd = document.querySelector('.popup__form_type_add'); // форма добавления места
 export const placeBtnAdd = document.querySelector('.profile__add-btn'); // кнопка "добавить" место
 
-// константа для всех попапов
+// константы для изменения аватарки:
+export const profileBtnUpdateAvatar = document.querySelector('.profile__avatar-container');
+//console.log(profileBtnUpdateAvatar)
+export const updateAvatarForm = document.querySelector('.popup__form_edit-avatar');
+//console.log(updateAvatarForm)
+
+
+// константа для всех попапов:
 export const popupSelector = document.querySelectorAll('.popup');
 
-// НОВЫЕ КОНСТАНТЫ-СЕЛЕКТОРЫ
+// НОВЫЕ КОНСТАНТЫ-СЕЛЕКТОРЫ:
 export const containerSelector = '.elements';
 export const popupWithImageSelector = '.popup_type_show';
 export const popupAddCardSelector = '.popup_type_add';
 export const popupEditProfileSelector = '.popup_type_edit';
 export const nameSelector = '.profile__name';
 export const aboutSelector = '.profile__job';
+export const popupEditAvatarSelector = '.popup_type_avatar'
+//console.log(popupEditAvatarSelector)
 
-
-export const updateAvatarForm = document.querySelector('.popup__form_edit-avatar');

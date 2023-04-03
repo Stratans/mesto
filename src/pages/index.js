@@ -12,6 +12,8 @@ import {
 	placeFormAdd,
 	placeBtnAdd,
 	updateAvatarForm,
+	profileBtnUpdateAvatar,
+	popupEditAvatarSelector,
 	token,
 	address
 } from '../utils/constants.js'
@@ -37,7 +39,7 @@ const api = new Api({token, address});
 
 // начальный массив
 const cardSectionData = {
-	items: api.getInitialCards(),
+	items: initialCards,
 	renderer: createCard
 };
 
@@ -95,6 +97,14 @@ function openEditForm() {
 };
 
 
+// обновление аватара
+const popupEditAvatar = new PopupWithForm(popupEditAvatarSelector, submitEditCardFormHandle)
+popupEditAvatar.setEventListeners();
+
+// function openEditAvatar() {
+// 	popupEditAvatar.open(userInfo.getUserInfo());
+// };
+
 
 // создание карточки
 function createCard(item) {
@@ -115,6 +125,12 @@ placeBtnAdd.addEventListener('click', () => {
 	validatorAddCard.disableSubmitButton();
 });
 
+// слушатель на обновление аватара
+profileBtnUpdateAvatar.addEventListener('click', () => {
+	popupEditAvatar.open()
+	validatorUpdateAvatar.disableSubmitButton();
+});
+//console.log(popupEditAvatar)
 
 
 
