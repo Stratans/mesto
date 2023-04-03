@@ -11,6 +11,7 @@ import {
 	popupEditForm,
 	placeFormAdd,
 	placeBtnAdd,
+	updateAvatarForm,
 	token,
 	address
 } from '../utils/constants.js'
@@ -23,16 +24,27 @@ import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js'
+import Api from '../components/Api.js'
+
+const api = new Api({token, address});
+//console.log(api.getInitialCards())
+
+//const cardIni = api.getInitialCards()
+//console.log(cardIni)
+//console.log(cardIni[1])
+
+
 
 // начальный массив
 const cardSectionData = {
-	items: initialCards.reverse(),
+	items: api.getInitialCards(),
 	renderer: createCard
 };
 
 // добавляем пустую разметку
 const cardSection = new Section(cardSectionData, containerSelector);
 cardSection.renderItems();
+
 
 // сабмит формы добавления
 const submitAddFormHandle = (evt, dataInput) => {
@@ -73,10 +85,16 @@ validatorEditProfile.enableValidation();
 const validatorAddCard = new FormValidator(options, placeFormAdd)
 validatorAddCard.enableValidation();
 
+// валидация в обновлении аватара
+const validatorUpdateAvatar = new FormValidator(options, updateAvatarForm)
+validatorUpdateAvatar.enableValidation();
+
 // функция открытия окна редактирования
 function openEditForm() {
 	popupEditProfile.open(userInfo.getUserInfo());
 };
+
+
 
 // создание карточки
 function createCard(item) {
@@ -96,6 +114,8 @@ placeBtnAdd.addEventListener('click', () => {
 	popupAddCard.open();
 	validatorAddCard.disableSubmitButton();
 });
+
+
 
 
 
