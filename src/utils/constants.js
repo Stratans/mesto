@@ -58,3 +58,4 @@ export const popupAddCardSelector = '.popup_type_add';
 export const popupEditProfileSelector = '.popup_type_edit';
 export const nameSelector = '.profile__name';
 export const aboutSelector = '.profile__job';
+//export const 
