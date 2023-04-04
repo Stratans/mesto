@@ -36,8 +36,15 @@ const api = new Api({ token, address });
 // информация о пользователе 
 const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
 
-api.getInitialCards().then(cards => cardSection.renderItems(cards));
-api.getUserInfo().then(userData => userInfo.setUserInfo(userData))
+//загрузка начальных данных
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    cardSection.renderItems(cards);
+  })
+
+// api.getInitialCards().then(cards => cardSection.renderItems(cards));
+// api.getUserInfo().then(userData => userInfo.setUserInfo(userData))
 
 //console.log(api.getUserInfo())
 
@@ -47,7 +54,7 @@ const cardSectionData = {
 	renderer: createCard
 };
 
-console.log(api.getInitialCards())
+//console.log(api.getInitialCards())
 
 
 // добавляем пустую разметку
@@ -170,6 +177,7 @@ function clickLikeHandle(card) {
 
 function submitDeleteCardFormHandle(evt, {cardId, card}) {
 	evt.preventDefault();
+	//console.log(cardId)
 	api
 	.deleteCard(cardId)
 	.then(() => {
