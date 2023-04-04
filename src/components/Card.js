@@ -11,7 +11,6 @@ export default class Card {
 		this._openDelete = openDelete;
 		this._templateSelector = templateSelector;
 		this._handleCardClick = handleCardClick;
-		//console.log(owner)
 	};
 
 	// Метод _getTemplate - находим и возвращаем шаблон карточки
@@ -81,7 +80,7 @@ export default class Card {
 			this._like.classList.add('element__btn-like_active');
 			this._likeCount.textContent = data.likes.length;
 			this._isLiked = true
-		}
+		};
 	};
 
 	// Вешаем слушатели
@@ -91,10 +90,6 @@ export default class Card {
 		});
 
 		this._like.addEventListener('click', () => this._clickLikeHandle(this))
-
-		// this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
-		// 	this._deleteCard();
-		// });
 
 		if (this._isUserOwner) {
 			this._deleteBtn.addEventListener('click', this._deleteHandle)

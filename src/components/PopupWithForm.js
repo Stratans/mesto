@@ -6,6 +6,7 @@ export default class PopupWithForm extends Popup {
 		this._submitForm = submitForm;
 		this._form = this._popup.querySelector('.popup__form')
 		this._inputs = this._form.querySelectorAll('.popup__input');
+		this._btn = this._popup.querySelector('.popup__btn-save')
 	};
 
 	_getInputValues() {
@@ -32,6 +33,12 @@ export default class PopupWithForm extends Popup {
 	close() {
 		super.close();
 		this._form.reset();
+	};
+
+	// публичный метод для рендерига кнопки сабмита
+	renderingBtn(isLoading, text = 'Сохранение...') {
+		this._btn.disabled = isLoading;
+		this._btn.textContent = text;
 	};
 
 	setEventListeners() {

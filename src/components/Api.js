@@ -5,9 +5,8 @@ export default class Api {
 		this._headers = {
 			authorization: this._token,
 			'Content-Type': 'application/json'
-		}
-	}
-
+		};
+	};
 
 	// обрабатываем ошибки с сервера
 	_checkResponse(res) {
@@ -15,8 +14,7 @@ export default class Api {
 			return Promise.reject(`Ошибка: ${res.status}`);
 		}
 		return res.json();
-	}
-
+	};
 
 	// получаем карточки 
 	getInitialCards() {
@@ -41,7 +39,6 @@ export default class Api {
 		}).then((res) => this._checkResponse(res))
 	};
 
-
 	// обновление аватара
 	updateAvatar(avatar) {
 		return fetch(`${this._address}/users/me/avatar`, {
@@ -50,7 +47,6 @@ export default class Api {
 			body: JSON.stringify({ avatar })
 		}).then((res) => this._checkResponse(res))
 	};
-
 
 	// добавление лайка
 	_addLike(id) {
@@ -68,7 +64,7 @@ export default class Api {
 		}).then((res) => this._checkResponse(res))
 	};
 
-
+	// публичный метод для лайк/анлайк
 	toggleLike({ cardId, isLiked }) {
 		return isLiked ? this._removeLike(cardId) : this._addLike(cardId)
 	};
@@ -80,16 +76,37 @@ export default class Api {
 			headers: this._headers,
 			body: JSON.stringify({ name, link })
 		}).then((res) => this._checkResponse(res))
-	}
+	};
 
+	// удаление карточки
 	deleteCard(cardId) {
-		return fetch(`${this._address}cards/${cardId}`, {
+		return fetch(`${this._address}/cards/${cardId}`, {
 			method: 'DELETE',
 			headers: this._headers,
 		}).then((res) => this._checkResponse(res))
 	};
+};
 
-	// // приостановка лайка
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // приостановка лайка
 	// _pauseLike(id) {
 	// 	return fetch(`${this._address}/cards/${id}/likes`, {
 	// 		method: 'PUT',
@@ -98,7 +115,6 @@ export default class Api {
 	// };
 
 
-}
 
 
 

@@ -21,24 +21,18 @@ export const placeBtnAdd = document.querySelector('.profile__add-btn'); // кн�
 
 // константы для изменения аватарки:
 export const profileBtnUpdateAvatar = document.querySelector('.profile__avatar-container');
-//console.log(profileBtnUpdateAvatar)
 export const updateAvatarForm = document.querySelector('.popup__form_edit-avatar');
-//console.log(updateAvatarForm)
-export const avatarSelector = '.profile__avatar';
-
 
 // константа для всех попапов:
 export const popupSelector = document.querySelectorAll('.popup');
 
-// НОВЫЕ КОНСТАНТЫ-СЕЛЕКТОРЫ:
+// КОНСТАНТЫ-СЕЛЕКТОРЫ:
 export const containerSelector = '.elements';
 export const popupWithImageSelector = '.popup_type_show';
 export const popupAddCardSelector = '.popup_type_add';
 export const popupEditProfileSelector = '.popup_type_edit';
 export const nameSelector = '.profile__name';
 export const aboutSelector = '.profile__job';
-export const popupEditAvatarSelector = '.popup_type_avatar'
-export const popupDeleteSelector = '.popup_type_delete'
-
-//console.log(popupEditAvatarSelector)
-
+export const popupEditAvatarSelector = '.popup_type_avatar';
+export const popupDeleteSelector = '.popup_type_delete';
+export const avatarSelector = '.profile__avatar';

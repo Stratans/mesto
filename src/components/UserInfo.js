@@ -4,7 +4,6 @@ export default class UserInfo {
 		this._about = document.querySelector(aboutSelector);
 		this._avatar = document.querySelector(avatarSelector);
 		this._userId = '';
-		//console.log(this._avatar)
 	};
 
 	getUserInfo() {
@@ -21,6 +20,4 @@ export default class UserInfo {
 		this._avatar.src = dataInput.avatar;
 		this._userId = dataInput._id
 	};
-
-	
 };
