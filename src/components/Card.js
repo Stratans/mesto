@@ -1,10 +1,15 @@
 //Создаем класс Card, записываем в него конструктор
 export default class Card {
-	constructor(data, templateSelector, handleCardClick) {
+	constructor({name, link, likes, _id}, templateSelector, handleCardClick, userId, clickLikeHanle) {
+		this._name = name;
+		this._link = link;
+		this._likes = likes.length;
+		this._cardId = _id;
+		this._isLiked = likes.some(like => like._id === userId);
+		this._clickLikeHanle = clickLikeHanle;
 		this._templateSelector = templateSelector;
-		this._name = data.name;
-		this._link = data.link;
 		this._handleCardClick = handleCardClick;
+		//console.log(userId)
 	};
 
 	// Метод _getTemplate - находим и возвращаем шаблон карточки
@@ -42,10 +47,29 @@ export default class Card {
 		this._elementCardImg = this._elementCard.querySelector('.element__img');
 		this._elementCardImg.src = this._link;
 		this._elementCardImg.alt = this._name;
+		this._likeCount = this._elementCard.querySelector('.element__like-number')
 		this._elementCard.querySelector('.element__title').textContent = this._name;
 		this._like = this._elementCard.querySelector('.element__btn-like');
+		this._likeCount.textContent = this._likes;
 		this._setEventListeners();
 		return this._elementCard;
+	};
+
+	getInfo() {
+		return {cardId: this._cardId, isLiked: this._isLiked}
+	};
+
+	setLike(data) {
+		if (this._isLiked) {
+			this._like.classList.remove('element__btn-like_active');
+			this._likeCount.textContent = data.likes.length;
+			this._isLiked = false
+		}
+		else {
+			this._like.classList.add('element__btn-like_active');
+			this._likeCount.textContent = data.likes.length;
+			this._isLiked = true
+		}
 	};
 
 	// Вешаем слушатели
@@ -54,9 +78,11 @@ export default class Card {
 			this._clickImageHandle(this._name, this._link);
 		});
 
-		this._like.addEventListener('click', () => {
-			this._pressLike()
-		});
+		// this._like.addEventListener('click', () => {
+		// 	this._pressLike()
+		// });
+
+		this._like.addEventListener('click', () => this._clickLikeHanle(this))
 
 		this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
 			this._deleteCard();

@@ -29,8 +29,10 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api.js'
 
-const api = new Api({token, address});
+const api = new Api({ token, address });
 
+// информация о пользователе 
+const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
 
 api.getInitialCards().then(cards => cardSection.renderItems(cards));
 api.getUserInfo().then(userData => userInfo.setUserInfo(userData))
@@ -43,8 +45,13 @@ const cardSectionData = {
 	renderer: createCard
 };
 
+console.log(api.getInitialCards())
+
+
 // добавляем пустую разметку
 const cardSection = new Section(cardSectionData, containerSelector);
+
+
 
 // сабмит формы добавления
 const submitAddFormHandle = (evt, dataInput) => {
@@ -64,25 +71,31 @@ popupAddCard.setEventListeners();
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
 popupWithImage.setEventListeners();
 
-const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
+
+
+// --------------------------ПРОФИЛЬ-------------------------------//
 
 // сабмит профиля 
 const submitEditCardFormHandle = (evt, dataInput) => {
 	evt.preventDefault();
-	
 	api.updateProfile(dataInput).then((data) => {
-	userInfo.setUserInfo(data);
-	//console.log(data)
-	popupEditProfile.close();
+		userInfo.setUserInfo(data);
+		//console.log(data)
+		popupEditProfile.close();
 	});
 };
-
-
 
 // редактирование профиля
 const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitEditCardFormHandle)
 popupEditProfile.setEventListeners();
+// --------------------------ПРОФИЛЬ-------------------------------//
 
+
+
+
+
+
+// --------------------------ВАЛИДАЦИЯ-------------------------------//
 // валидация в профиле  
 const validatorEditProfile = new FormValidator(options, popupEditForm)
 validatorEditProfile.enableValidation();
@@ -94,29 +107,36 @@ validatorAddCard.enableValidation();
 // валидация в обновлении аватара
 const validatorUpdateAvatar = new FormValidator(options, updateAvatarForm)
 validatorUpdateAvatar.enableValidation();
+// --------------------------ВАЛИДАЦИЯ-------------------------------//
+
+
+
 
 // функция открытия окна редактирования
 function openEditForm() {
 	popupEditProfile.open(userInfo.getUserInfo());
 };
 
-function submitEditAvatar(evt, {avatar}) {
-	evt.preventDefault();
-	api.updateAvatar(avatar).then((data) => {
-		userInfo.setUserInfo(data);
-		popupEditAvatar.close();
-	})
 
-}
 
+
+
+// --------------------------АВАТАР-------------------------------//
 
 // обновление аватара
 const popupEditAvatar = new PopupWithForm(popupEditAvatarSelector, submitEditAvatar)
 popupEditAvatar.setEventListeners();
 
-// function openEditAvatar() {
-// 	popupEditAvatar.open(userInfo.getUserInfo());
-// };
+// сабмит аватара
+function submitEditAvatar(evt, { avatar }) {
+	evt.preventDefault();
+	api.updateAvatar(avatar).then((data) => {
+		userInfo.setUserInfo(data);
+		popupEditAvatar.close();
+	})
+}
+// --------------------------АВАТАР-------------------------------//
+
 
 
 // создание карточки
@@ -124,16 +144,35 @@ function createCard(item) {
 	const cardElement = new Card(
 		item,
 		'#element-template',
-		() => { popupWithImage.open(item) }
+		() => { popupWithImage.open(item) },
+		userInfo.getUserInfo().userId,
+		clickLikeHanle,
 	).generateCard();
 	return cardElement;
 };
+
+
+
+// --------------------------ЛАЙКИ-------------------------------//
+function clickLikeHanle(card) {
+	api
+	.toggleLike(card.getInfo())
+	.then(res => card.setLike(res))
+	
+};
+// --------------------------ЛАЙКИ-------------------------------//
+
+
+
+
+
+// --------------------------СЛУШАТЕЛИ-------------------------------//
 
 // слушатель на кнопке редактировать
 popupEditBtn.addEventListener('click', openEditForm);
 
 // слушатель на кнопке добавления
-placeBtnAdd.addEventListener('click', () => { 
+placeBtnAdd.addEventListener('click', () => {
 	popupAddCard.open();
 	validatorAddCard.disableSubmitButton();
 });
@@ -145,6 +184,7 @@ profileBtnUpdateAvatar.addEventListener('click', () => {
 });
 //console.log(popupEditAvatar)
 //console.log(profileBtnUpdateAvatar)
+// --------------------------СЛУШАТЕЛИ-------------------------------//
 
 
 

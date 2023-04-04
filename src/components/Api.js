@@ -60,25 +60,34 @@ export default class Api {
 	// 	}).then((res) => this._checkResponse(res))
 	// }
 
-	// // добавление лайка
-	// addLike(_id) {
-	// 	return fetch(`${this._address}/cards/${id}/likes`, {
-	// 		method: 'PATCH',
-	// 		headers: this._headers,
-	// 	}).then((res) => this._checkResponse(res))
-	// };
+	// добавление лайка
+	_addLike(id) {
+		return fetch(`${this._address}/cards/${id}/likes`, {
+			method: 'PATCH',
+			headers: this._headers,
+		}).then((res) => this._checkResponse(res))
+	};
 
-	// // удаление лайка
-	// removeLike(_id) {
-	// 	return fetch(`${this._address}/cards/${id}/likes`, {
-	// 		method: 'DELETE',
-	// 		headers: this._headers,
-	// 	}).then((res) => this._checkResponse(res))
-	// };
+	// удаление лайка
+	_removeLike(id) {
+		return fetch(`${this._address}/cards/${id}/likes`, {
+			method: 'DELETE',
+			headers: this._headers,
+		}).then((res) => this._checkResponse(res))
+	};
 
+	
+	toggleLike({cardId, isLiked}) {
+		if (isLiked) {
+			this._removeLike(cardId)
+		}
+		else {
+			this._addLike(cardId)
+		}
+	};
 
 	// // приостановка лайка
-	// pauseLike(_id) {
+	// _pauseLike(id) {
 	// 	return fetch(`${this._address}/cards/${id}/likes`, {
 	// 		method: 'PUT',
 	// 		headers: this._headers,
