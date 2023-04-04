@@ -53,6 +53,7 @@ export const profileBtnUpdateAvatar = document.querySelector('.profile__avatar-c
 //console.log(profileBtnUpdateAvatar)
 export const updateAvatarForm = document.querySelector('.popup__form_edit-avatar');
 //console.log(updateAvatarForm)
+export const avatarSelector = '.profile__avatar';
 
 
 // константа для всех попапов:

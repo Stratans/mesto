@@ -15,7 +15,8 @@ import {
 	profileBtnUpdateAvatar,
 	popupEditAvatarSelector,
 	token,
-	address
+	address,
+	avatarSelector
 } from '../utils/constants.js'
 
 import { options } from '../utils/constants.js'
@@ -29,24 +30,21 @@ import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api.js'
 
 const api = new Api({token, address});
-//console.log(api.getInitialCards())
-
-//const cardIni = api.getInitialCards()
-//console.log(cardIni)
-//console.log(cardIni[1])
 
 
+api.getInitialCards().then(cards => cardSection.renderItems(cards));
+api.getUserInfo().then(userData => userInfo.setUserInfo(userData))
+
+//console.log(api.getUserInfo())
 
 // начальный массив
 const cardSectionData = {
-	items: initialCards,
+	items: [],
 	renderer: createCard
 };
 
 // добавляем пустую разметку
 const cardSection = new Section(cardSectionData, containerSelector);
-cardSection.renderItems();
-
 
 // сабмит формы добавления
 const submitAddFormHandle = (evt, dataInput) => {
@@ -66,14 +64,20 @@ popupAddCard.setEventListeners();
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
 popupWithImage.setEventListeners();
 
-const userInfo = new UserInfo({ nameSelector, aboutSelector });
+const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
 
 // сабмит профиля 
 const submitEditCardFormHandle = (evt, dataInput) => {
 	evt.preventDefault();
-	userInfo.setUserInfo(dataInput);
+	
+	api.updateProfile(dataInput).then((data) => {
+	userInfo.setUserInfo(data);
+	//console.log(data)
 	popupEditProfile.close();
+	});
 };
+
+
 
 // редактирование профиля
 const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitEditCardFormHandle)
@@ -96,9 +100,18 @@ function openEditForm() {
 	popupEditProfile.open(userInfo.getUserInfo());
 };
 
+function submitEditAvatar(evt, {avatar}) {
+	evt.preventDefault();
+	api.updateAvatar(avatar).then((data) => {
+		userInfo.setUserInfo(data);
+		popupEditAvatar.close();
+	})
+
+}
+
 
 // обновление аватара
-const popupEditAvatar = new PopupWithForm(popupEditAvatarSelector, submitEditCardFormHandle)
+const popupEditAvatar = new PopupWithForm(popupEditAvatarSelector, submitEditAvatar)
 popupEditAvatar.setEventListeners();
 
 // function openEditAvatar() {
@@ -131,6 +144,7 @@ profileBtnUpdateAvatar.addEventListener('click', () => {
 	validatorUpdateAvatar.disableSubmitButton();
 });
 //console.log(popupEditAvatar)
+//console.log(profileBtnUpdateAvatar)
 
 
 
