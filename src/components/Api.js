@@ -51,19 +51,11 @@ export default class Api {
 		}).then((res) => this._checkResponse(res))
 	};
 
-	// // добавление карточки на сервер
-	// setCard({ name, link }) {
-	// 	return fetch(`${this._address}/cards`, {
-	// 		method: 'POST',
-	// 		headers: this._headers,
-	// 		body: JSON.stringify({ name, link })
-	// 	}).then((res) => this._checkResponse(res))
-	// }
 
 	// добавление лайка
 	_addLike(id) {
 		return fetch(`${this._address}/cards/${id}/likes`, {
-			method: 'PATCH',
+			method: 'PUT',
 			headers: this._headers,
 		}).then((res) => this._checkResponse(res))
 	};
@@ -76,14 +68,25 @@ export default class Api {
 		}).then((res) => this._checkResponse(res))
 	};
 
-	
-	toggleLike({cardId, isLiked}) {
-		if (isLiked) {
-			this._removeLike(cardId)
-		}
-		else {
-			this._addLike(cardId)
-		}
+
+	toggleLike({ cardId, isLiked }) {
+		return isLiked ? this._removeLike(cardId) : this._addLike(cardId)
+	};
+
+	// добавление карточки на сервер
+	setCard({ name, link }) {
+		return fetch(`${this._address}/cards`, {
+			method: 'POST',
+			headers: this._headers,
+			body: JSON.stringify({ name, link })
+		}).then((res) => this._checkResponse(res))
+	}
+
+	deleteCard(cardId) {
+		return fetch(`${this._address}cards/${cardId}`, {
+			method: 'DELETE',
+			headers: this._headers,
+		}).then((res) => this._checkResponse(res))
 	};
 
 	// // приостановка лайка

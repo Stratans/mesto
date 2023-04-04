@@ -1,15 +1,17 @@
 //Создаем класс Card, записываем в него конструктор
 export default class Card {
-	constructor({name, link, likes, _id}, templateSelector, handleCardClick, userId, clickLikeHanle) {
+	constructor({name, link, likes, _id, owner}, templateSelector, handleCardClick, userId, clickLikeHandle, openDelete) {
 		this._name = name;
 		this._link = link;
 		this._likes = likes.length;
 		this._cardId = _id;
+		this._isUserOwner = owner._id === userId;
 		this._isLiked = likes.some(like => like._id === userId);
-		this._clickLikeHanle = clickLikeHanle;
+		this._clickLikeHandle = clickLikeHandle;
+		this._openDelete = openDelete;
 		this._templateSelector = templateSelector;
 		this._handleCardClick = handleCardClick;
-		//console.log(userId)
+		//console.log(owner)
 	};
 
 	// Метод _getTemplate - находим и возвращаем шаблон карточки
@@ -21,6 +23,10 @@ export default class Card {
 			.cloneNode(true);
 		return cardElement;
 	};
+
+	_deleteHandle = () => {
+		this._openDelete(this._cardId, this._elementCard)
+	}
 
 	// функция открытия попапа с картинкой
 	_clickImageHandle = () => {
@@ -51,6 +57,10 @@ export default class Card {
 		this._elementCard.querySelector('.element__title').textContent = this._name;
 		this._like = this._elementCard.querySelector('.element__btn-like');
 		this._likeCount.textContent = this._likes;
+		if (this._isLiked) {
+			this._like.classList.add('element__btn-like_active')
+		};
+		this._deleteBtn = this._elementCard.querySelector('.element__btn-trash');
 		this._setEventListeners();
 		return this._elementCard;
 	};
@@ -64,6 +74,8 @@ export default class Card {
 			this._like.classList.remove('element__btn-like_active');
 			this._likeCount.textContent = data.likes.length;
 			this._isLiked = false
+
+			
 		}
 		else {
 			this._like.classList.add('element__btn-like_active');
@@ -78,14 +90,23 @@ export default class Card {
 			this._clickImageHandle(this._name, this._link);
 		});
 
-		// this._like.addEventListener('click', () => {
-		// 	this._pressLike()
+		this._like.addEventListener('click', () => this._clickLikeHandle(this))
+
+		// this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
+		// 	this._deleteCard();
 		// });
 
-		this._like.addEventListener('click', () => this._clickLikeHanle(this))
-
-		this._elementCard.querySelector('.element__btn-trash').addEventListener('click', () => {
-			this._deleteCard();
-		});
+		if (this._isUserOwner) {
+			this._deleteBtn.addEventListener('click', this._deleteHandle)
+		}
+		else {
+			this._deleteBtn.remove();
+		}
 	};
 };
+
+
+
+
+
+

@@ -1,6 +1,5 @@
 import '../pages/index.css'
 import {
-	initialCards,
 	containerSelector,
 	popupWithImageSelector,
 	nameSelector,
@@ -14,6 +13,7 @@ import {
 	updateAvatarForm,
 	profileBtnUpdateAvatar,
 	popupEditAvatarSelector,
+	popupDeleteSelector,
 	token,
 	address,
 	avatarSelector
@@ -28,6 +28,8 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api.js'
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js'
+
 
 const api = new Api({ token, address });
 
@@ -56,11 +58,12 @@ const cardSection = new Section(cardSectionData, containerSelector);
 // сабмит формы добавления
 const submitAddFormHandle = (evt, dataInput) => {
 	evt.preventDefault();
-	const data = {};
-	data.name = dataInput.name;
-	data.link = dataInput.link;
+	api
+	.setCard(dataInput)
+	.then((data) => {
 	cardSection.addItem(createCard(data));
 	popupAddCard.close();
+	})
 };
 
 // добавление карточки
@@ -146,7 +149,8 @@ function createCard(item) {
 		'#element-template',
 		() => { popupWithImage.open(item) },
 		userInfo.getUserInfo().userId,
-		clickLikeHanle,
+		clickLikeHandle,
+		(cardId, card) => popupConfirmation.open(cardId, card)
 	).generateCard();
 	return cardElement;
 };
@@ -154,14 +158,29 @@ function createCard(item) {
 
 
 // --------------------------ЛАЙКИ-------------------------------//
-function clickLikeHanle(card) {
+function clickLikeHandle(card) {
 	api
 	.toggleLike(card.getInfo())
 	.then(res => card.setLike(res))
-	
+
 };
 // --------------------------ЛАЙКИ-------------------------------//
 
+
+
+function submitDeleteCardFormHandle(evt, {cardId, card}) {
+	evt.preventDefault();
+	api
+	.deleteCard(cardId)
+	.then(() => {
+		card.remove();
+		popupConfirmation.close();
+	})
+}
+
+
+const popupConfirmation = new PopupWithConfirmation(popupDeleteSelector, submitDeleteCardFormHandle)
+popupConfirmation.setEventListeners();
 
 
 
@@ -182,6 +201,8 @@ profileBtnUpdateAvatar.addEventListener('click', () => {
 	popupEditAvatar.open()
 	validatorUpdateAvatar.disableSubmitButton();
 });
+
+
 //console.log(popupEditAvatar)
 //console.log(profileBtnUpdateAvatar)
 // --------------------------СЛУШАТЕЛИ-------------------------------//
