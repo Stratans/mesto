@@ -35,11 +35,11 @@ const api = new Api({ token, address });
 
 // загрузка начальных данных
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, cards]) => {
-    userInfo.setUserInfo(userData);
-    cardSection.renderItems(cards);
-  })
-  .catch((err) => console.log(`Ошибка: ${err}`))
+	.then(([userData, cards]) => {
+		userInfo.setUserInfo(userData);
+		cardSection.renderItems(cards);
+	})
+	.catch((err) => console.log(`Ошибка: ${err}`))
 
 // информация о пользователе 
 const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
@@ -49,12 +49,6 @@ const cardSectionData = {
 	items: [],
 	renderer: createCard
 };
-
-
-
-
-
-
 
 // добавляем пустую разметку
 const cardSection = new Section(cardSectionData, containerSelector);
@@ -104,10 +98,6 @@ function createCard(item) {
 	return cardElement;
 };
 
-
-
-
-
 // функция открытия окна редактирования
 function openEditForm() {
 	popupEditProfile.open(userInfo.getUserInfo());
@@ -116,50 +106,50 @@ function openEditForm() {
 // функция для лайка
 function clickLikeHandle(card) {
 	api
-	.toggleLike(card.getInfo())
-	.then(res => card.setLike(res))
-	.catch((err) => console.log(`Ошибка: ${err}`))
+		.toggleLike(card.getInfo())
+		.then(res => card.setLike(res))
+		.catch((err) => console.log(`Ошибка: ${err}`))
 };
 
 // функция для удаления карточки
-function submitDeleteCardFormHandle(evt, {cardId, card}) {
+function submitDeleteCardFormHandle(evt, { cardId, card }) {
 	evt.preventDefault();
 	api
-	.deleteCard(cardId)
-	.then(() => {
-		card.remove();
-		popupConfirmation.close();
-	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
+		.deleteCard(cardId)
+		.then(() => {
+			card.remove();
+			popupConfirmation.close();
+		})
+		.catch((err) => console.log(`Ошибка: ${err}`))
 };
 
 // сабмит профиля 
-function submitEditCardFormHandle (evt, dataInput) {
+function submitEditCardFormHandle(evt, dataInput) {
 	evt.preventDefault();
 	popupEditProfile.renderingBtn(true)
 	api.updateProfile(dataInput).then((data) => {
 		userInfo.setUserInfo(data);
 		popupEditProfile.close();
 	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-		popupEditProfile.renderingBtn(false)
+		.catch((err) => console.log(`Ошибка: ${err}`))
+		.finally(() => {
+			popupEditProfile.renderingBtn(false)
 		})
 };
 
 // сабмит формы добавления
-function submitAddFormHandle (evt, dataInput) {
+function submitAddFormHandle(evt, dataInput) {
 	evt.preventDefault();
 	popupAddCard.renderingBtn(true);
 	api
-	.setCard(dataInput)
-	.then((data) => {
-	cardSection.addItem(createCard(data));
-	popupAddCard.close();
-	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-		popupAddCard.renderingBtn(false)
+		.setCard(dataInput)
+		.then((data) => {
+			cardSection.addItem(createCard(data));
+			popupAddCard.close();
+		})
+		.catch((err) => console.log(`Ошибка: ${err}`))
+		.finally(() => {
+			popupAddCard.renderingBtn(false)
 		});
 };
 
@@ -171,10 +161,10 @@ function submitEditAvatar(evt, { avatar }) {
 		userInfo.setUserInfo(data);
 		popupEditAvatar.close();
 	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-	popupEditAvatar.renderingBtn(false)
-	})
+		.catch((err) => console.log(`Ошибка: ${err}`))
+		.finally(() => {
+			popupEditAvatar.renderingBtn(false)
+		})
 };
 
 // слушатель на кнопке редактировать

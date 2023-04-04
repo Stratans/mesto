@@ -1,14 +1,14 @@
 import Popup from './Popup.js';
 
 export default class PopupWithConfirmation extends Popup {
-	constructor (popupSelector, submitConfirmation) {
-		super (popupSelector);
+	constructor(popupSelector, submitConfirmation) {
+		super(popupSelector);
 		this._submit = submitConfirmation;
 		this._form = this._popup.querySelector('.popup__form');
 	};
 
 	_onSubmit = evt => {
-		this._submit(evt, {cardId: this._cardId, card: this._card})
+		this._submit(evt, { cardId: this._cardId, card: this._card })
 	};
 
 	open(cardId, card) {

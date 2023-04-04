@@ -1,6 +1,6 @@
 //Создаем класс Card, записываем в него конструктор
 export default class Card {
-	constructor({name, link, likes, _id, owner}, templateSelector, handleCardClick, userId, clickLikeHandle, openDelete) {
+	constructor({ name, link, likes, _id, owner }, templateSelector, handleCardClick, userId, clickLikeHandle, openDelete) {
 		this._name = name;
 		this._link = link;
 		this._likes = likes.length;
@@ -65,7 +65,7 @@ export default class Card {
 	};
 
 	getInfo() {
-		return {cardId: this._cardId, isLiked: this._isLiked}
+		return { cardId: this._cardId, isLiked: this._isLiked }
 	};
 
 	setLike(data) {
@@ -74,7 +74,7 @@ export default class Card {
 			this._likeCount.textContent = data.likes.length;
 			this._isLiked = false
 
-			
+
 		}
 		else {
 			this._like.classList.add('element__btn-like_active');
