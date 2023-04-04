@@ -50,6 +50,12 @@ const cardSectionData = {
 	renderer: createCard
 };
 
+
+
+
+
+
+
 // добавляем пустую разметку
 const cardSection = new Section(cardSectionData, containerSelector);
 
@@ -98,53 +104,13 @@ function createCard(item) {
 	return cardElement;
 };
 
-// сабмит формы добавления
-const submitAddFormHandle = (evt, dataInput) => {
-	evt.preventDefault();
-	popupAddCard.renderingBtn(true);
-	api
-	.setCard(dataInput)
-	.then((data) => {
-	cardSection.addItem(createCard(data));
-	popupAddCard.close();
-	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-		popupAddCard.renderingBtn(false)
-		});
-};
 
-// сабмит профиля 
-const submitEditCardFormHandle = (evt, dataInput) => {
-	evt.preventDefault();
-	popupEditProfile.renderingBtn(true)
-	api.updateProfile(dataInput).then((data) => {
-		userInfo.setUserInfo(data);
-		popupEditProfile.close();
-	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-		popupEditProfile.renderingBtn(false)
-		})
-};
+
+
 
 // функция открытия окна редактирования
 function openEditForm() {
 	popupEditProfile.open(userInfo.getUserInfo());
-};
-
-// сабмит аватара
-function submitEditAvatar(evt, { avatar }) {
-	evt.preventDefault();
-	popupEditAvatar.renderingBtn(true)
-	api.updateAvatar(avatar).then((data) => {
-		userInfo.setUserInfo(data);
-		popupEditAvatar.close();
-	})
-	.catch((err) => console.log(`Ошибка: ${err}`))
-	.finally(() => {
-	popupEditAvatar.renderingBtn(false)
-	})
 };
 
 // функция для лайка
@@ -167,6 +133,50 @@ function submitDeleteCardFormHandle(evt, {cardId, card}) {
 	.catch((err) => console.log(`Ошибка: ${err}`))
 };
 
+// сабмит профиля 
+function submitEditCardFormHandle (evt, dataInput) {
+	evt.preventDefault();
+	popupEditProfile.renderingBtn(true)
+	api.updateProfile(dataInput).then((data) => {
+		userInfo.setUserInfo(data);
+		popupEditProfile.close();
+	})
+	.catch((err) => console.log(`Ошибка: ${err}`))
+	.finally(() => {
+		popupEditProfile.renderingBtn(false)
+		})
+};
+
+// сабмит формы добавления
+function submitAddFormHandle (evt, dataInput) {
+	evt.preventDefault();
+	popupAddCard.renderingBtn(true);
+	api
+	.setCard(dataInput)
+	.then((data) => {
+	cardSection.addItem(createCard(data));
+	popupAddCard.close();
+	})
+	.catch((err) => console.log(`Ошибка: ${err}`))
+	.finally(() => {
+		popupAddCard.renderingBtn(false)
+		});
+};
+
+// сабмит аватара
+function submitEditAvatar(evt, { avatar }) {
+	evt.preventDefault();
+	popupEditAvatar.renderingBtn(true)
+	api.updateAvatar(avatar).then((data) => {
+		userInfo.setUserInfo(data);
+		popupEditAvatar.close();
+	})
+	.catch((err) => console.log(`Ошибка: ${err}`))
+	.finally(() => {
+	popupEditAvatar.renderingBtn(false)
+	})
+};
+
 // слушатель на кнопке редактировать
 popupEditBtn.addEventListener('click', openEditForm);
 
@@ -181,10 +191,3 @@ profileBtnUpdateAvatar.addEventListener('click', () => {
 	popupEditAvatar.open()
 	validatorUpdateAvatar.disableSubmitButton();
 });
-
-// --------------------------СЛУШАТЕЛИ-------------------------------//
-
-
-
-
-

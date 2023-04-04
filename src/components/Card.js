@@ -80,7 +80,7 @@ export default class Card {
 			this._like.classList.add('element__btn-like_active');
 			this._likeCount.textContent = data.likes.length;
 			this._isLiked = true
-		};
+		}
 	};
 
 	// Вешаем слушатели
