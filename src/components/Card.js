@@ -25,7 +25,7 @@ export default class Card {
 
 	_deleteHandle = () => {
 		this._openDelete(this._cardId, this._elementCard)
-	}
+	};
 
 	// функция открытия попапа с картинкой
 	_clickImageHandle = () => {
@@ -99,9 +99,3 @@ export default class Card {
 		}
 	};
 };
-
-
-
-
-
-
