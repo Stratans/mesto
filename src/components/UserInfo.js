@@ -14,10 +14,19 @@ export default class UserInfo {
 		};
 	};
 
+	// setUserInfo(dataInput) { 
+	// 	this._name.textContent = dataInput.name; 
+	// 	this._about.textContent = dataInput.about; 
+	// 	this._avatar.src = dataInput.avatar; 
+	// 	this._userId = dataInput._id 
+	// }; 
+
 	setUserInfo(dataInput) {
-		this._name.textContent = dataInput.name;
-		this._about.textContent = dataInput.about;
-		this._avatar.src = dataInput.avatar;
-		this._userId = dataInput._id
+		if (dataInput.name) {
+			this._name.textContent = dataInput.name;
+			this._about.textContent = dataInput.about;
+			this._avatar.src = dataInput.avatar;
+			this._userId = dataInput._id
+		};
 	};
 };
